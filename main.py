@@ -1,2 +1,2 @@
-from cogs.loginHandler import userLogin
-from cogs.registerHandler import userRegister
+from cogs.LoginHandler import userLogin
+from cogs.RegisterHandler import userRegister

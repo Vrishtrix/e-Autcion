@@ -1,1 +1,1 @@
-__all__ = ['LoginHandler']
+__all__ = ['LoginHandler', 'RegisterHandler']
