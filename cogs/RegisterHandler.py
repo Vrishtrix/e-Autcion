@@ -1,4 +1,3 @@
-from connector import mycursor
 from colorama import Fore, Style
 import getpass as gp
 
@@ -9,18 +8,16 @@ class userRegister:
       def registerScreen(self):
             print(Fore.CYAN + '''
                   +----------------------------+
-                  |           Register         |
+                  |          Register          |
                   +----------------------------+
-            '''
+            ''' + Style.RESET_ALL
             )
-
-            print(Style.RESET_ALL)
 
             self.email = input('E-mail: ')
             self.name = input('Full Name: ')
-            self.password = gp.getpass(prompt='Password' + Fore.GREEN + '(input hidden)' + Style.RESET_ALL + ': ', stream=None)
+            self.password = gp.getpass(prompt='Password' + Fore.WHITE + Style.DIM + '[hidden]' + Style.RESET_ALL + ': ', stream=None)
 
-      def doRegister():
+      def doRegister(self):
             '''
                   Write code to register the user in the db.
 

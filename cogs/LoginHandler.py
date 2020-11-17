@@ -1,4 +1,3 @@
-from connector import mycursor
 from colorama import Fore, Style
 import getpass as gp
 
@@ -6,19 +5,16 @@ class userLogin:
       def __init__(self):
             pass
 
-
       def loginScreen(self):
             print(Fore.CYAN + '''
                   +----------------------------+
                   |           Login            |
                   +----------------------------+
-            '''
+            ''' + Style.RESET_ALL
             )
 
-            print(Style.RESET_ALL)
-
             self.email = input('E-mail: ')
-            self.password = gp.getpass(prompt='Password' + Fore.GREEN + '(input hidden)' + Style.RESET_ALL + ': ', stream=None)
+            self.password = gp.getpass(prompt='Password' + Fore.WHITE + Style.DIM + '[hidden]' + Style.RESET_ALL + ': ', stream=None)
 
       def doLogin(self):
             '''
