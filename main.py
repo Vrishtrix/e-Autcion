@@ -33,6 +33,7 @@ def main():
                   print(Fore.RED + 'Invalid option provided!' + Style.RESET_ALL)
       
 if __name__ == '__main__':
+      clear()
       print(Fore.CYAN + '''
             +------------------------------------------------+
             |          Online Auction System V1.0.0          |

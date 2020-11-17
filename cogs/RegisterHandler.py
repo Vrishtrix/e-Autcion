@@ -13,7 +13,8 @@ class userRegister:
             ''' + Style.RESET_ALL
             )
 
-            self.email = input('E-mail: ')
+            self.email = input('E-mail: ' + Fore.GREEN)
+            print(Style.RESET_ALL)
             self.name = input('Full Name: ')
             self.password = gp.getpass(prompt='Password' + Fore.WHITE + Style.DIM + '[hidden]' + Style.RESET_ALL + ': ', stream=None)
 
