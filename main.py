@@ -13,7 +13,10 @@ def clear():
 
 def main():
       if 'USER' in os.environ:
-            name = getuser()
+            name = os.environ['USER']
+            menuChoice = MenuHandler.optionmenu(name)
+            print(Style.RESET_ALL)
+            # clear()
       else:
             menuChoice = MenuHandler.lor()
             print(Style.RESET_ALL)
@@ -23,11 +26,15 @@ def main():
                   userContext = userLogin()
                   userContext.loginScreen()
                   userContext.doLogin()
+                  clear()
+                  main()
 
             elif menuChoice == 'register':
                   userContext = userRegister()
                   userContext.registerScreen()
                   userContext.doRegister()
+                  clear()
+                  main()
 
             else:
                   print(Fore.RED + 'Invalid option provided!' + Style.RESET_ALL)
