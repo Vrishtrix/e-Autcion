@@ -16,7 +16,14 @@ def main():
             name = os.environ['USER']
             menuChoice = MenuHandler.optionmenu(name)
             print(Style.RESET_ALL)
-            # clear()
+            clear()
+
+            if menuChoice == '5':
+                  del os.environ['USER']
+
+            else:
+                  print(Fore.RED + 'Invalid option provided!' + Style.RESET_ALL)
+
       else:
             menuChoice = MenuHandler.lor()
             print(Style.RESET_ALL)
