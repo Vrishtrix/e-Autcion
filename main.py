@@ -12,14 +12,14 @@ def clear():
             _ = os.system('clear')
 
 def main():
-      if 'USER' in os.environ:
-            name = os.environ['USER']
+      if 'AUCUSER' in os.environ:
+            name = os.environ['AUCUSER']
             menuChoice = MenuHandler.optionmenu(name)
             print(Style.RESET_ALL)
             clear()
 
             if menuChoice == '5':
-                  del os.environ['USER']
+                  del os.environ['AUCUSER']
 
             else:
                   print(Fore.RED + 'Invalid option provided!' + Style.RESET_ALL)

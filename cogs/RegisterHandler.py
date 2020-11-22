@@ -26,5 +26,5 @@ class userRegister:
                   First select everything from the database and check if the email doesnt exist already.
                   If it exists then print an error or else insert all the data into the db.
             '''
-            os.environ['USER'] = self.name
+            os.environ['AUCUSER'] = self.name
             return

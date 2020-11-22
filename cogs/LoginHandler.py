@@ -1,5 +1,8 @@
 from colorama import Fore, Style
+from connector import mycursor
+from time import sleep
 import getpass as gp
+import os
 
 class userLogin:
       def __init__(self):
@@ -18,12 +21,14 @@ class userLogin:
             self.password = gp.getpass(prompt='Password' + Fore.WHITE + Style.DIM + '[hidden]' + Style.RESET_ALL + ': ', stream=None)
 
       def doLogin(self):
-            '''
-                  Write code to check for username and password in the db.
+            mycursor.execute(f'SELECT name FROM users WHERE email = "{self.email}" AND password = "{self.password}"')
+            result = mycursor.fetchone()
 
-                  Select data from the db where email == self.email and password == self.password.
-                  Check for how many records it could retrieve. If there are no records then the username/password is incorrect.
-                  If theres one record then the details are correct and the user is logged in.
-                  If theres more than one record then something is wrong.
-            '''
+            if result == None:
+                  print(Fore.RED + 'Invalid username or password. Redirecting back to the menu.' + Style.RESET_ALL)
+                  sleep(5)
+
+            else:
+                  os.environ['AUCUSER'] = str(result[0])
+            
             return
