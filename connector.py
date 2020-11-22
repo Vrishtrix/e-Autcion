@@ -4,7 +4,8 @@ mydb = mc.connect(
       host='localhost',
       user='root',
       password='Hello@123',
-      database='auction'
+      database='auction',
+      autocommit=True
 )
 
 mycursor = mydb.cursor()
