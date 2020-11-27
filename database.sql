@@ -6,7 +6,7 @@ USE auction;
 CREATE TABLE users(
       ID int NOT NULL AUTO_INCREMENT,
       email varchar(255) NOT NULL,
-      name varchar(255) NOT NULL,
+      name varchar(255) NOT NULL UNIQUE,
       password varchar(255) NOT NULL,
       CONSTRAINT users_PK PRIMARY KEY(ID, email)
 );

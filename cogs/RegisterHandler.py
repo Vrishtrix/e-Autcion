@@ -24,7 +24,7 @@ class userRegister:
       def doRegister(self):
             try:
                   mycursor.execute(f'INSERT INTO users(email, name, password) VALUES ("{self.email}", "{self.name}", "{self.password}")')
-                  os.environ['AUCUSER'] = self.name
+                  os.environ['AUCUSER'], os.environ['AUCMAIL'] = self.name, self.email
             except:
                   print(Fore.RED + 'Something went wrong! Redirecting back to main menu.' + Style.RESET_ALL)
                   sleep(5)

@@ -21,7 +21,7 @@ class userLogin:
             self.password = gp.getpass(prompt='Password' + Fore.WHITE + Style.DIM + '[hidden]' + Style.RESET_ALL + ': ', stream=None)
 
       def doLogin(self):
-            mycursor.execute(f'SELECT name FROM users WHERE email = "{self.email}" AND password = "{self.password}"')
+            mycursor.execute(f'SELECT name, email FROM users WHERE email = "{self.email}" AND password = "{self.password}"')
             result = mycursor.fetchone()
 
             if result == None:
@@ -29,6 +29,6 @@ class userLogin:
                   sleep(5)
 
             else:
-                  os.environ['AUCUSER'] = str(result[0])
+                  os.environ['AUCUSER'], os.environ['AUCMAIL'] = str(result[0]), str(result[1])
             
             return

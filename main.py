@@ -2,6 +2,7 @@ import os
 from getpass import getuser
 from colorama import Fore, Style
 from cogs import MenuHandler
+from cogs.ItemsHandler import itemsManager
 from cogs.LoginHandler import userLogin
 from cogs.RegisterHandler import userRegister
 
@@ -13,12 +14,17 @@ def clear():
 
 def main():
       if 'AUCUSER' in os.environ:
-            name = os.environ['AUCUSER']
+            name, email = os.environ['AUCUSER'], os.environ['AUCMAIL']
             menuChoice = MenuHandler.optionmenu(name)
             print(Style.RESET_ALL)
             clear()
 
-            if menuChoice == '5':
+            itemManager = itemsManager()
+
+            if menuChoice == '1':
+                  itemManager.prodList()
+
+            elif menuChoice == '5':
                   del os.environ['AUCUSER']
 
             else:
