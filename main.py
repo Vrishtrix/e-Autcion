@@ -24,6 +24,11 @@ def main():
             if menuChoice == '1':
                   itemManager.prodList()
 
+            elif menuChoice == '2':
+                  itemManager.addProd()
+                  clear()
+                  main()
+
             elif menuChoice == '3':
                   itemManager.manageListings()
 

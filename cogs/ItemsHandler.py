@@ -17,10 +17,18 @@ class itemsManager:
             return
 
       def addProd(self):
+            mycursor.execute(f'SELECT ID FROM users WHERE email = "{str(os.environ["AUCMAIL"])}"')
+            result = mycursor.fetchone()
+
             self.name = str(input('Enter name of the product: ' + Fore.GREEN))
             print(Style.RESET_ALL)
             self.price = int(input('Enter start price' + Fore.WHITE + Style.DIM + '[without commas]' + Style.RESET_ALL + ': ' + Fore.GREEN))
+            print(Style.RESET_ALL)
 
+            mycursor.execute(f'INSERT INTO objects(name, highest_bid, product_owner, highest_bidder, sold) VALUES ("{self.name}", {self.price}, {int(result[0])}, {int(result[0])}, "false")')
+            
+            print('Your product, ' + Fore.CYAN + self.name + Style.RESET_ALL + ' was successfully put up for sale! Redirecting back to main menu.')
+            sleep(5)
             return
 
       def manageListings(self):

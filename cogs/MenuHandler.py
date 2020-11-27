@@ -23,4 +23,4 @@ def optionmenu(name):
 
       ''')
 
-      return str(input('Please select an option' + Fore.GREEN + '(0/1/2/3/4/5): ' + Fore.CYAN))
+      return str(input('Please select an option' + Fore.GREEN + '(1/2/3/4/5): ' + Fore.CYAN))
