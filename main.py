@@ -24,6 +24,9 @@ def main():
             if menuChoice == '1':
                   itemManager.prodList()
 
+            elif menuChoice == '3':
+                  itemManager.manageListings()
+
             elif menuChoice == '5':
                   del os.environ['AUCUSER']
                   del os.environ['AUCMAIL']
