@@ -26,6 +26,7 @@ def main():
 
             elif menuChoice == '5':
                   del os.environ['AUCUSER']
+                  del os.environ['AUCMAIL']
 
             else:
                   print(Fore.RED + 'Invalid option provided!' + Style.RESET_ALL)
