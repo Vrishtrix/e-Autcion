@@ -1,5 +1,6 @@
 import os
 from colorama import Fore, Style
+from tabulate import tabulate
 from connector import mycursor
 from time import sleep
 
@@ -8,15 +9,28 @@ class itemsManager:
             pass
 
       def prodList(self):
-            mycursor.execute('SELECT * FROM objects WHERE sold="false"')
+            print(Fore.CYAN + '''
+                  +----------------------------+
+                  |      Browse  products      |
+                  +----------------------------+
+            ''' + Style.RESET_ALL
+            )
+
+            mycursor.execute('SELECT objects.ID, objects.name, objects.highest_bid, users.name FROM objects INNER JOIN users ON objects.product_owner = users.ID WHERE sold="false"')
             result = mycursor.fetchall()
 
-            for i in result:
-                  print(i)
+            print(tabulate(result, headers=['Product ID', 'Product Name', 'Highest Bid', 'Name of seller'], tablefmt='psql'))
 
             return
 
       def addProd(self):
+            print(Fore.CYAN + '''
+                  +----------------------------+
+                  |     List a new product     |
+                  +----------------------------+
+            ''' + Style.RESET_ALL
+            )
+
             mycursor.execute(f'SELECT ID FROM users WHERE email = "{str(os.environ["AUCMAIL"])}"')
             result = mycursor.fetchone()
 
@@ -27,7 +41,7 @@ class itemsManager:
 
             mycursor.execute(f'INSERT INTO objects(name, highest_bid, product_owner, highest_bidder, sold) VALUES ("{self.name}", {self.price}, {int(result[0])}, {int(result[0])}, "false")')
             
-            print('Your product, ' + Fore.CYAN + self.name + Style.RESET_ALL + ' was successfully put up for sale! Redirecting back to main menu.')
+            print('Your product, ' + Fore.GREEN + self.name + Style.RESET_ALL + ' was successfully put up for sale!' + Fore.RED + ' Redirecting back to main menu.' + Style.RESET_ALL)
             sleep(5)
             return
 
@@ -37,5 +51,20 @@ class itemsManager:
 
             mycursor.execute(f'SELECT ID, name, highest_bid, highest_bidder FROM objects WHERE product_owner = {result[0]}')
             result = mycursor.fetchall()
+
+            return
+
+      def soldProducts(self):
+            print(Fore.CYAN + '''
+                  +-----------------------------+
+                  |      Your sold products     |
+                  +-----------------------------+
+            ''' + Style.RESET_ALL
+            )
+
+            mycursor.execute(f'SELECT objects.ID, objects.name, objects.highest_bid, users.name FROM objects INNER JOIN users ON objects.highest_bidder = users.ID WHERE sold = "true" AND users.email = "{os.environ["AUCMAIL"]}"')
+            result = mycursor.fetchall()
+
+            print(tabulate(result, headers=['Product ID', 'Product Name', 'Bid Amount', 'Name of buyer'], tablefmt='psql'))
 
             return

@@ -23,6 +23,8 @@ def main():
 
             if menuChoice == '1':
                   itemManager.prodList()
+                  clear()
+                  main()
 
             elif menuChoice == '2':
                   itemManager.addProd()
@@ -31,7 +33,15 @@ def main():
 
             elif menuChoice == '3':
                   itemManager.manageListings()
+                  clear()
+                  main()
 
+            elif menuChoice == '4':
+                  itemManager.soldProducts()
+                  input('Press ' + Fore.GREEN + 'enter ' + Style.RESET_ALL + 'to go back to the dashboard.')
+                  clear()
+                  main()
+                  
             elif menuChoice == '5':
                   del os.environ['AUCUSER']
                   del os.environ['AUCMAIL']
