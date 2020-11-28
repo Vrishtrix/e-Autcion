@@ -24,3 +24,11 @@ def optionmenu(name):
       ''')
 
       return str(input('Please select an option' + Fore.GREEN + '(1/2/3/4/5): ' + Fore.CYAN))
+
+def manageProd():
+      try:
+            product = int(input('Enter the ' + Fore.CYAN + 'Product ID ' + Style.RESET_ALL + 'of the product you want to manage: ' + Fore.GREEN))
+            print(Style.RESET_ALL)
+
+      except:
+            print(Fore.RED + 'Invalid option provided! Redirecting back to dashboard.' + Style.RESET_ALL)

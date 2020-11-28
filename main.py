@@ -23,6 +23,7 @@ def main():
 
             if menuChoice == '1':
                   itemManager.prodList()
+                  input('Press ' + Fore.GREEN + 'enter ' + Style.RESET_ALL + 'to go back to the dashboard.')
                   clear()
                   main()
 
@@ -33,6 +34,7 @@ def main():
 
             elif menuChoice == '3':
                   itemManager.manageListings()
+                  MenuHandler.manageProd()
                   clear()
                   main()
 
