@@ -13,7 +13,9 @@ class itemsManager:
                   +----------------------------+
                   |      Browse  products      |
                   +----------------------------+
-            ''' + Style.RESET_ALL
+            ''' + Style.RESET_ALL + '''
+Browse the marketplace for products that have been put up for sale.
+            '''
             )
 
             mycursor.execute('SELECT objects.ID, objects.name, objects.highest_bid, users.name FROM objects INNER JOIN users ON objects.product_owner = users.ID WHERE sold="false"')
@@ -49,8 +51,10 @@ class itemsManager:
             mycursor.execute(f'SELECT ID FROM users WHERE email = "{str(os.environ["AUCMAIL"])}"')
             result = mycursor.fetchone()
 
-            mycursor.execute(f'SELECT ID, name, highest_bid, highest_bidder FROM objects WHERE product_owner = {result[0]}')
+            mycursor.execute(f'SELECT objects.ID, objects.name, objects.highest_bid, users.name FROM objects INNER JOIN users ON objects.highest_bidder = users.ID WHERE product_owner = {result[0]}')
             result = mycursor.fetchall()
+
+            print(tabulate(result, headers=['Product ID', 'Product Name', 'Highest Bid', 'Name of bidder'], tablefmt='psql'))
 
             return
 
@@ -59,7 +63,9 @@ class itemsManager:
                   +-----------------------------+
                   |      Your sold products     |
                   +-----------------------------+
-            ''' + Style.RESET_ALL
+            ''' + Style.RESET_ALL + '''
+      Here's a list of all your products that were sold already.
+            '''
             )
 
             mycursor.execute(f'SELECT objects.ID, objects.name, objects.highest_bid, users.name FROM objects INNER JOIN users ON objects.highest_bidder = users.ID WHERE sold = "true" AND users.email = "{os.environ["AUCMAIL"]}"')
