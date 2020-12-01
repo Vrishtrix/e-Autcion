@@ -30,6 +30,10 @@ def manageProd():
       try:
             product = int(input('Enter the ' + Fore.CYAN + 'Product ID ' + Style.RESET_ALL + 'of the product you want to manage: ' + Fore.GREEN))
             print(Style.RESET_ALL)
+            action = str(input('Would you like to mark this product as ' + Fore.GREEN + 'sold ' + Style.RESET_ALL + 'or ' + Fore.RED + 'delete your listing' + Style.RESET_ALL + '?' + Fore.WHITE + Style.DIM + ' (sold/delete): ' + Style.RESET_ALL + Fore.CYAN))
+            print(Style.RESET_ALL)
+
+            return [product, action]
 
       except:
             print(Fore.RED + 'Invalid option provided! Redirecting back to dashboard.' + Style.RESET_ALL)

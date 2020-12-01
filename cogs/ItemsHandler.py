@@ -51,7 +51,7 @@ Browse the marketplace for products that have been put up for sale.
             mycursor.execute(f'SELECT ID FROM users WHERE email = "{str(os.environ["AUCMAIL"])}"')
             result = mycursor.fetchone()
 
-            mycursor.execute(f'SELECT objects.ID, objects.name, objects.highest_bid, users.name FROM objects INNER JOIN users ON objects.highest_bidder = users.ID WHERE product_owner = {result[0]}')
+            mycursor.execute(f'SELECT objects.ID, objects.name, objects.highest_bid, users.name FROM objects INNER JOIN users ON objects.highest_bidder = users.ID WHERE product_owner = {result[0]} AND sold="false"')
             result = mycursor.fetchall()
 
             print(tabulate(result, headers=['Product ID', 'Product Name', 'Highest Bid', 'Name of bidder'], tablefmt='psql'))

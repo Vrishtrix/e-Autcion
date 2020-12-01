@@ -5,6 +5,7 @@ from cogs import MenuHandler
 from cogs.ItemsHandler import itemsManager
 from cogs.LoginHandler import userLogin
 from cogs.RegisterHandler import userRegister
+from cogs.StateHandler import isSold
 
 def clear():
       if os.name == 'nt':
@@ -34,7 +35,13 @@ def main():
 
             elif menuChoice == '3':
                   itemManager.manageListings()
-                  MenuHandler.manageProd()
+                  options = MenuHandler.manageProd()
+                  
+                  if options == None:
+                        pass
+                  else:
+                        isSold(options[0], options[1])
+                        
                   clear()
                   main()
 
