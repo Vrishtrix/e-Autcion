@@ -74,3 +74,21 @@ Browse the marketplace for products that have been put up for sale.
             print(tabulate(result, headers=['Product ID', 'Product Name', 'Bid Amount', 'Name of buyer'], tablefmt='psql'))
 
             return
+
+      def purchasedProducts(self):
+            print(Fore.CYAN + '''
+                  +---------------------------------+
+                  |      Products you purchased     |
+                  +---------------------------------+
+            ''' + Style.RESET_ALL + '''
+      Here's a list of all your products that you have purchased.
+            '''
+            )
+
+            mycursor.execute(f'SELECT objects.ID, objects.name, objects.highest_bid, users.name FROM objects INNER JOIN users ON objects.product_owner = users.ID WHERE sold = "true" AND users.email = "{os.environ["AUCMAIL"]}"')
+            result = mycursor.fetchall()
+
+            print(tabulate(result, headers=['Product ID', 'Product Name', 'Bid Amount', 'Name of seller'], tablefmt='psql'))
+
+
+            return

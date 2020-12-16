@@ -20,11 +20,12 @@ def optionmenu(name):
 {Fore.GREEN} 2) {Style.RESET_ALL} List a new product
 {Fore.GREEN} 3) {Style.RESET_ALL} Manage current listings
 {Fore.GREEN} 4) {Style.RESET_ALL} View sold products
-{Fore.GREEN} 5) {Style.RESET_ALL} Log out
+{Fore.GREEN} 5) {Style.RESET_ALL} View products you have purchased
+{Fore.GREEN} 6) {Style.RESET_ALL} Log out
 
       ''')
 
-      return str(input('Please select an option' + Fore.GREEN + '(1/2/3/4/5): ' + Fore.CYAN))
+      return str(input('Please select an option' + Fore.GREEN + '(1/2/3/4/5/6): ' + Fore.CYAN))
 
 def manageProd():
       try:

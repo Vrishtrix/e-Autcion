@@ -1,5 +1,4 @@
 import os
-from getpass import getuser
 from colorama import Fore, Style
 from cogs import MenuHandler
 from cogs.ItemsHandler import itemsManager
@@ -50,8 +49,14 @@ def main():
                   input('Press ' + Fore.GREEN + 'enter ' + Style.RESET_ALL + 'to go back to the dashboard.')
                   clear()
                   main()
-                  
+
             elif menuChoice == '5':
+                  itemManager.purchasedProducts()
+                  input('Press ' + Fore.GREEN + 'enter ' + Style.RESET_ALL + 'to go back to the dashboard.')
+                  clear()
+                  main()
+                  
+            elif menuChoice == '6':
                   del os.environ['AUCUSER']
                   del os.environ['AUCMAIL']
 
